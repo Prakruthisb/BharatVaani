@@ -22,12 +22,12 @@ lang_map_ui = {
 target_lang = st.selectbox("Select Target Language", list(lang_map_ui.keys()))
 
 if uploaded_file:
-    with open("temp_audio", "wb") as f:
+    with open("temp_audio.wav", "wb") as f:
         f.write(uploaded_file.read())
 
     if st.button("Translate 🎯"):
         with st.spinner("Processing..."):
-            output_audio = translation("temp_audio", lang_map_ui[target_lang])
+            output_audio = translation("temp_audio.wav", lang_map_ui[target_lang])
 
         st.success("Done!")
 
