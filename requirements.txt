@@ -14,3 +14,4 @@ pydub
 librosa
 soundfile
 elevenlabs
+git+https://github.com/VarunGumma/IndicTransToolkit.git
