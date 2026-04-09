@@ -47,7 +47,10 @@ def speech_to_text(file_path):
             files={"file": (audio_file, f, "audio/wav")},
             data={}
         )
-
+    
+    print("STATUS:", response.status_code)
+    print("RESPONSE:", response.text)
+    
     # Convert JSON safely
     result = response.json()
 
