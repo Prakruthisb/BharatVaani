@@ -1,14 +1,15 @@
 ---
-title: Streamlit Template Space
+title: Indian Speech Translator
 emoji: 🚀
 colorFrom: red
 colorTo: red
 sdk: docker
 app_port: 8501
 tags:
-  - streamlit
+- streamlit
 pinned: false
-short_description: Streamlit template space
+short_description: A Streamlit app to translate one Indian language to another
+license: mit
 ---
 
 # Welcome to Streamlit!
