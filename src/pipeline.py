@@ -26,19 +26,15 @@ def preprocess_audio(input_file, output_file="input2.wav"):
     return output_file
 
 import requests
-# from audio_preprocessing import preprocess_audio
 import os
-# from dotenv import load_dotenv
 
-# load_dotenv()
-# SARVAM_API_KEY = os.getenv("SARVAM_API_KEY")
-# SARVAM_API_KEY = "sk_v781mwd9_in2djNdYr9pzqXVlZBHKinmI"
+SARVAM_API_KEY = os.getenv("SARVAM_API_KEY")
 
 def speech_to_text(file_path):
     url = "https://api.sarvam.ai/speech-to-text"
 
     headers = {
-        "Authorization": 'Bearer sk_v781mwd9_in2djNdYr9pzqXVlZBHKinmI'
+        "Authorization": f'Bearer {SARVAM_API_KEY}'
     }
 
     audio_file = preprocess_audio(file_path)
@@ -93,6 +89,8 @@ def load_model(model_name):
 
 
 # Task-based loader
+from functools import lru_cache
+@lru_cache(maxsize=10)
 def get_model(task):
     if task == "en_indic":
         return load_model("ai4bharat/indictrans2-en-indic-1B")
@@ -226,11 +224,9 @@ def translate_text(text, src_lang, tgt_lang):
 
 from elevenlabs.client import ElevenLabs
 import os
-# from dotenv import load_dotenv
 
-# load_dotenv()
-
-tts_client = ElevenLabs(api_key="sk_7102f84d2877d8c9f1d6bb2e2e101395b9364b05711be7bf")
+ELEVEN_API_KEY = os.getenv("ELEVEN_API_KEY")
+tts_client = ElevenLabs(api_key=ELEVEN_API_KEY)
 # tts_client = ElevenLabs(api_key=os.getenv("ELEVEN_API_KEY"))
 
 def text_to_speech(text, output_file="output.mp3"):
