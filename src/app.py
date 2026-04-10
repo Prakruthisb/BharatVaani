@@ -41,20 +41,20 @@ if uploaded_file is not None:
 
     st.audio("temp_audio.wav")
 
-    if st.button("Translate 🎯"):
-        with st.spinner("Processing..."):
-            try:
-                output_audio = translation("temp_audio.wav", lang_map_ui[target_lang])
-                st.success("Done!")
-                st.audio(output_audio)
+    # if st.button("Translate 🎯"):
+    #     with st.spinner("Processing..."):
+    #         try:
+    #             output_audio = translation("temp_audio.wav", lang_map_ui[target_lang])
+    #             st.success("Done!")
+    #             st.audio(output_audio)
 
-                with open(output_audio, "rb") as f:
-                    st.download_button(
-                        label="Download Output",
-                        data=f,
-                        file_name="translated.mp3",
-                        mime="audio/mp3"
-                    )
+    #             with open(output_audio, "rb") as f:
+    #                 st.download_button(
+    #                     label="Download Output",
+    #                     data=f,
+    #                     file_name="translated.mp3",
+    #                     mime="audio/mp3"
+    #                 )
 
-            except Exception as e:
-                st.error(str(e))
+    #         except Exception as e:
+    #             st.error(str(e))
