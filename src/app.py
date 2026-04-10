@@ -15,10 +15,10 @@ uploaded_file = st.file_uploader("Upload Audio File", type=["wav", "mp3", "mp4"]
 if uploaded_file is not None:
     st.success("File uploaded successfully ✅")
     st.write("File name:", uploaded_file.name)
-elif uploaded_file is None:
-    st.write('failure')
-else:
-    st.warning("Please upload a file")
+# elif uploaded_file is None:
+#     st.write('failure')
+# else:
+#     st.warning("Please upload a file")
     
 lang_map_ui = {
     "Hindi": "hin_Deva",
