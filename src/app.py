@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-from pipeline import translation
+from pipeline import translation, SARVAM_API_KEY, ELEVEN_API_KEY
 
 st.set_page_config(page_title="Speech Translator", layout="centered")
 
