@@ -44,7 +44,8 @@ def speech_to_text(file_path):
         response = requests.post(
             url,
             headers=headers,
-            files={"file": (audio_file, f, "audio/wav")},
+            # files={"file": (audio_file, f, "audio/wav")},
+            files={"audio": (audio_file, f, "audio/wav")},
             data={}
         )
     
