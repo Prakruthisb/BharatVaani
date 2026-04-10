@@ -48,8 +48,8 @@ def speech_to_text(file_path):
             data={}
         )
     
-    print("STATUS:", response.status_code)
-    print("RESPONSE:", response.text)
+    if response.status_code != 200:
+        raise Exception(f"Sarvam API Error {response.status_code}: {response.text}")
     
     # Convert JSON safely
     result = response.json()
