@@ -11,7 +11,11 @@ st.title("🎙️ Indian Language Speech Translator")
 # st.write("ELEVEN KEY:", ELEVEN_API_KEY)
 
 uploaded_file = st.file_uploader("Upload Audio File", type=["wav", "mp3", "mp4"])
-
+if uploaded_file:
+    st.write("succes")
+else:
+    st.write('failure')
+    
 lang_map_ui = {
     "Hindi": "hin_Deva",
     "Kannada": "kan_Knda",
