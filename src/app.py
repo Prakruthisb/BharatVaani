@@ -25,29 +25,26 @@ lang_map_ui = {
 
 target_lang = st.selectbox("Select Target Language", list(lang_map_ui.keys()))
 
-if uploaded_file:
+if uploaded_file is not None:
     with open("temp_audio.wav", "wb") as f:
         f.write(uploaded_file.read())
 
+    st.audio("temp_audio.wav")
+
     if st.button("Translate 🎯"):
         with st.spinner("Processing..."):
-            # output_audio = translation("temp_audio.wav", lang_map_ui[target_lang])
             try:
                 output_audio = translation("temp_audio.wav", lang_map_ui[target_lang])
                 st.success("Done!")
                 st.audio(output_audio)
-            
+
+                with open(output_audio, "rb") as f:
+                    st.download_button(
+                        label="Download Output",
+                        data=f,
+                        file_name="translated.mp3",
+                        mime="audio/mp3"
+                    )
+
             except Exception as e:
                 st.error(str(e))
-
-        st.success("Done!")
-
-        st.audio(output_audio)
-
-        with open(output_audio, "rb") as f:
-            st.download_button(
-                label="Download Output",
-                data=f,
-                file_name="translated.mp3",
-                mime="audio/mp3"
-            )
