@@ -6,6 +6,9 @@ st.set_page_config(page_title="Speech Translator", layout="centered")
 
 st.title("🎙️ Indian Language Speech Translator")
 
+st.write("SARVAM KEY:", SARVAM_API_KEY)
+st.write("ELEVEN KEY:", ELEVEN_API_KEY)
+
 uploaded_file = st.file_uploader("Upload Audio File", type=["wav", "mp3", "mp4"])
 
 lang_map_ui = {
