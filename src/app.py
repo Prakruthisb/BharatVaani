@@ -1,13 +1,14 @@
 import streamlit as st
 import os
-from pipeline import translation, SARVAM_API_KEY, ELEVEN_API_KEY
+# from pipeline import translation, SARVAM_API_KEY, ELEVEN_API_KEY
+from pipeline import translation
 
 st.set_page_config(page_title="Speech Translator", layout="centered")
 
 st.title("🎙️ Indian Language Speech Translator")
 
-st.write("SARVAM KEY:", SARVAM_API_KEY)
-st.write("ELEVEN KEY:", ELEVEN_API_KEY)
+# st.write("SARVAM KEY:", SARVAM_API_KEY)
+# st.write("ELEVEN KEY:", ELEVEN_API_KEY)
 
 uploaded_file = st.file_uploader("Upload Audio File", type=["wav", "mp3", "mp4"])
 
