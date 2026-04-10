@@ -30,7 +30,14 @@ if uploaded_file:
 
     if st.button("Translate 🎯"):
         with st.spinner("Processing..."):
-            output_audio = translation("temp_audio.wav", lang_map_ui[target_lang])
+            # output_audio = translation("temp_audio.wav", lang_map_ui[target_lang])
+            try:
+                output_audio = translation("temp_audio.wav", lang_map_ui[target_lang])
+                st.success("Done!")
+                st.audio(output_audio)
+            
+            except Exception as e:
+                st.error(str(e))
 
         st.success("Done!")
 
