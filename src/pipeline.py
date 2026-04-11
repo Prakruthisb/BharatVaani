@@ -72,22 +72,26 @@ def speech_to_text(file_path):
 def load_model(model_name):
     import torch
     from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+    import os
     
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+    token = os.getenv("HF_TOKEN")
     print(f"🚀 Loading model: {model_name}")
 
     try:
         # ✅ Load tokenizer
         tokenizer = AutoTokenizer.from_pretrained(
             model_name,
-            trust_remote_code=True
+            trust_remote_code=True,
+            token=token
         )
 
         # ✅ Load model with memory optimization
         model = AutoModelForSeq2SeqLM.from_pretrained(
             model_name,
             trust_remote_code=True,
-            low_cpu_mem_usage=True   # 🔥 important
+            low_cpu_mem_usage=True,   # 🔥 important
+            token=token
         )
 
         # ✅ Move to device
@@ -134,6 +138,9 @@ def initialize_model_and_tokenizer(ckpt_dir, quantization):
     import torch
     from transformers import AutoModelForSeq2SeqLM, BitsAndBytesConfig, AutoTokenizer
     from IndicTransToolkit import IndicProcessor
+    import os 
+
+    token = os.getenv("HF_TOKEN")
     
     BATCH_SIZE = 4
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
@@ -153,12 +160,13 @@ def initialize_model_and_tokenizer(ckpt_dir, quantization):
     else:
         qconfig = None
 
-    tokenizer = AutoTokenizer.from_pretrained(ckpt_dir, trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(ckpt_dir, trust_remote_code=True,token=token)
     model = AutoModelForSeq2SeqLM.from_pretrained(
         ckpt_dir,
         trust_remote_code=True,
         low_cpu_mem_usage=True,
         quantization_config=qconfig,
+        token=token
     )
 
     if qconfig == None:
