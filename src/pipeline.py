@@ -63,52 +63,68 @@ def speech_to_text(file_path):
     return transcript, language_code
 # print(speech_to_text("/content/input2.wav"))
 # print(speech_to_text("/content/input2.wav"))
+
 import torch
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
-from IndicTransToolkit import IndicProcessor
-from functools import lru_cache
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+
 def load_model(model_name):
-    print(f"Loading model: {model_name}...")
+    print(f"🚀 Loading model: {model_name}")
 
     try:
-        print("Step A: tokenizer loading")
-        tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+        # ✅ Load tokenizer
+        tokenizer = AutoTokenizer.from_pretrained(
+            model_name,
+            trust_remote_code=True
+        )
 
-        print("Step B: model loading")
-        model = AutoModelForSeq2SeqLM.from_pretrained(model_name, trust_remote_code=True)
+        # ✅ Load model with memory optimization
+        model = AutoModelForSeq2SeqLM.from_pretrained(
+            model_name,
+            trust_remote_code=True,
+            low_cpu_mem_usage=True   # 🔥 important
+        )
 
-        print("Step C: moving to device")
+        # ✅ Move to device
         model = model.to(DEVICE)
 
-        print("✅ Model loaded successfully")
+        # ✅ Set evaluation mode
+        model.eval()
+
+        # ✅ Optional: half precision (ONLY if GPU)
+        if DEVICE == "cuda":
+            model = model.half()
+
+        print("✅ Model ready for inference")
 
         return tokenizer, model
 
     except Exception as e:
-        print("❌ ERROR OCCURRED:", e)
+        print("❌ Model loading failed:", str(e))
         raise e
 
 
 # Task-based loader
 from functools import lru_cache
-@lru_cache(maxsize=3)
+
+@lru_cache(maxsize=2)
 def get_model(task):
-    if task == "en_indic":
-        return load_model("ai4bharat/indictrans2-en-indic-1B")
-    
-    elif task == "indic_en":
-        return load_model("ai4bharat/indictrans2-indic-en-1B")
+    if task == "indic_en":
+        return load_model("ai4bharat/indictrans2-indic-en-dist-200M")
     
     elif task == "indic_indic":
-        return load_model("ai4bharat/indictrans2-indic-indic-1B")
+        return load_model("ai4bharat/indictrans2-indic-indic-dist-320M")
     
     else:
         raise ValueError("Invalid task")
 
 # Load processor once
-ip = IndicProcessor(inference=True)
+# ip = IndicProcessor(inference=True)
+@lru_cache(maxsize=1)
+def get_processor():
+    return IndicProcessor(inference=True)
+
 import torch
 from transformers import AutoModelForSeq2SeqLM, BitsAndBytesConfig, AutoTokenizer
 from IndicTransToolkit import IndicProcessor
