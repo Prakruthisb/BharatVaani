@@ -12,15 +12,21 @@ st.title("🎙️ Indian Language Speech Translator")
 
 uploaded_file = st.file_uploader("Upload Audio File", type=["wav", "mp3", "mp4"])
 
-st.write(uploaded_file)
+# st.write(uploaded_file)
 
 if uploaded_file is not None:
     st.success("File uploaded successfully ✅")
-    st.write("File name:", uploaded_file.name)
+    # st.write("File name:", uploaded_file.name)
 # elif uploaded_file is None:
 #     st.write('failure')
 # else:
 #     st.warning("Please upload a file")
+
+if uploaded_file is not None:
+    with open("temp_audio.wav", "wb") as f:
+        f.write(uploaded_file.read())
+
+    st.audio("temp_audio.wav")
     
 lang_map_ui = {
     "Hindi": "hin_Deva",
@@ -36,10 +42,10 @@ lang_map_ui = {
 target_lang = st.selectbox("Select Target Language", list(lang_map_ui.keys()))
 
 if uploaded_file is not None:
-    with open("temp_audio.wav", "wb") as f:
-        f.write(uploaded_file.read())
+    # with open("temp_audio.wav", "wb") as f:
+    #     f.write(uploaded_file.read())
 
-    st.audio("temp_audio.wav")
+    # st.audio("temp_audio.wav")
 
     if st.button("Translate 🎯"):
         with st.spinner("Processing..."):
