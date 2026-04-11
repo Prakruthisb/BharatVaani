@@ -133,6 +133,7 @@ def get_model(task):
         raise ValueError("Invalid task")
 
 # Load processor once
+from IndicTransToolkit import IndicProcessor
 ip = IndicProcessor(inference=True)
 # @lru_cache(maxsize=1)
 # def get_processor():
