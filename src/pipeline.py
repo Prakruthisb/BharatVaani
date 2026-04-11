@@ -1,9 +1,9 @@
 #audio preprocessing
-from pydub import AudioSegment
-import librosa
-import soundfile as sf
 
 def preprocess_audio(input_file, output_file="input2.wav"):
+    from pydub import AudioSegment
+    import librosa
+    import soundfile as sf
 
     # Step 1: Convert to mono + 16kHz
     try:
@@ -28,12 +28,12 @@ def preprocess_audio(input_file, output_file="input2.wav"):
 
     return output_file
 
-import requests
-import os
-
-SARVAM_API_KEY = os.getenv("SARVAM_API_KEY")
 
 def speech_to_text(file_path):
+    import requests
+    import os
+    
+    SARVAM_API_KEY = os.getenv("SARVAM_API_KEY")
     url = "https://api.sarvam.ai/speech-to-text"
 
     headers = {
@@ -68,12 +68,12 @@ def speech_to_text(file_path):
 # print(speech_to_text("/content/input2.wav"))
 # print(speech_to_text("/content/input2.wav"))
 
-import torch
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
-
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 def load_model(model_name):
+    import torch
+    from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+    
+    DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"🚀 Loading model: {model_name}")
 
     try:
@@ -129,15 +129,15 @@ def get_model(task):
 def get_processor():
     return IndicProcessor(inference=True)
 
-import torch
-from transformers import AutoModelForSeq2SeqLM, BitsAndBytesConfig, AutoTokenizer
-from IndicTransToolkit import IndicProcessor
-
-BATCH_SIZE = 4
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-quantization = None
 
 def initialize_model_and_tokenizer(ckpt_dir, quantization):
+    import torch
+    from transformers import AutoModelForSeq2SeqLM, BitsAndBytesConfig, AutoTokenizer
+    from IndicTransToolkit import IndicProcessor
+    
+    BATCH_SIZE = 4
+    DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+    quantization = None
     if quantization == "4-bit":
         qconfig = BitsAndBytesConfig(
             load_in_4bit=True,
@@ -245,14 +245,13 @@ def translate_text(text, src_lang, tgt_lang):
 
 #Text-to-Speech
 
-from elevenlabs.client import ElevenLabs
-import os
-
-ELEVEN_API_KEY = os.getenv("ELEVEN_API_KEY")
-tts_client = ElevenLabs(api_key=ELEVEN_API_KEY)
-# tts_client = ElevenLabs(api_key=os.getenv("ELEVEN_API_KEY"))
-
 def text_to_speech(text, output_file="output.mp3"):
+    from elevenlabs.client import ElevenLabs
+    import os
+    
+    ELEVEN_API_KEY = os.getenv("ELEVEN_API_KEY")
+    tts_client = ElevenLabs(api_key=ELEVEN_API_KEY)
+    # tts_client = ElevenLabs(api_key=os.getenv("ELEVEN_API_KEY"))
     audio_stream = tts_client.text_to_speech.convert(
         voice_id="hpp4J3VqNfWAUOO0d1Us",
         model_id="eleven_multilingual_v2",
