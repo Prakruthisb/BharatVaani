@@ -115,7 +115,7 @@ def load_model(model_name):
 # Task-based loader
 from functools import lru_cache
 
-@lru_cache(maxsize=2)
+@lru_cache(maxsize=3)
 def get_model(task):
     if task == "indic_en":
         # return load_model("ai4bharat/indictrans2-indic-en-dist-200M")
