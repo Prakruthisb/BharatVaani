@@ -6,7 +6,11 @@ import soundfile as sf
 def preprocess_audio(input_file, output_file="input2.wav"):
 
     # Step 1: Convert to mono + 16kHz
-    audio = AudioSegment.from_file(input_file)
+    try:
+        audio = AudioSegment.from_file(input_file)
+    except Exception as e:
+        print("AUDIO ERROR:", e)
+        raise e
     audio = audio.set_channels(1)
     audio = audio.set_frame_rate(16000)
 
