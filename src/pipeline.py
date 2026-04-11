@@ -1,4 +1,3 @@
-
 #audio preprocessing
 from pydub import AudioSegment
 import librosa
@@ -94,7 +93,7 @@ def load_model(model_name):
 
 # Task-based loader
 from functools import lru_cache
-@lru_cache(maxsize=10)
+@lru_cache(maxsize=3)
 def get_model(task):
     if task == "en_indic":
         return load_model("ai4bharat/indictrans2-en-indic-1B")
