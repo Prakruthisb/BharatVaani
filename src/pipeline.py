@@ -119,19 +119,24 @@ from functools import lru_cache
 @lru_cache(maxsize=2)
 def get_model(task):
     if task == "indic_en":
-        return load_model("ai4bharat/indictrans2-indic-en-dist-200M")
+        # return load_model("ai4bharat/indictrans2-indic-en-dist-200M")
+        return load_model("ai4bharat/indictrans2-indic-en-1B")
+
+    elif task == "en-indic":
+        return load_model("ai4bharat/indictrans2-en-indic-1B")
     
     elif task == "indic_indic":
-        return load_model("ai4bharat/indictrans2-indic-indic-dist-320M")
+        # return load_model("ai4bharat/indictrans2-indic-indic-dist-320M")
+        return load_model("ai4bharat/indictrans2-indic-indic-1B")
     
     else:
         raise ValueError("Invalid task")
 
 # Load processor once
-# ip = IndicProcessor(inference=True)
-@lru_cache(maxsize=1)
-def get_processor():
-    return IndicProcessor(inference=True)
+ip = IndicProcessor(inference=True)
+# @lru_cache(maxsize=1)
+# def get_processor():
+#     return IndicProcessor(inference=True)
 
 
 def initialize_model_and_tokenizer(ckpt_dir, quantization):
