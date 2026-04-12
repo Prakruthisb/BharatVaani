@@ -121,7 +121,7 @@ def get_model(task):
         # return load_model("ai4bharat/indictrans2-indic-en-dist-200M")
         return load_model("ai4bharat/indictrans2-indic-en-1B")
 
-    elif task == "en-indic":
+    elif task == "en_indic":
         return load_model("ai4bharat/indictrans2-en-indic-1B")
     
     elif task == "indic_indic":
