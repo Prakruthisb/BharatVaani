@@ -1,0 +1,88 @@
+{
+  "language": "Bengali",
+  "lang_code": "bn",
+  "asr": {
+    "wer": 21.49,
+    "cer": 7.45,
+    "samples": 99,
+    "errors": 1
+  }
+}
+
+{
+  "language": "Gujarati",
+  "lang_code": "gu",
+  "asr": {
+    "wer": 15.35,
+    "cer": 4.38,
+    "samples": 99,
+    "errors": 1
+  }
+}
+
+{
+  "language": "Hindi",
+  "lang_code": "hi",
+  "asr": {
+    "wer": 13.66,
+    "cer": 5.32,
+    "samples": 100,
+    "errors": 0
+  }
+}
+
+{
+  "language": "Kannada",
+  "lang_code": "kn",
+  "asr": {
+    "wer": 33.14,
+    "cer": 9.76,
+    "samples": 100,
+    "errors": 0
+  }
+}
+
+{
+  "language": "Malayalam",
+  "lang_code": "ml",
+  "asr": {
+    "wer": 30.09,
+    "cer": 7.64,
+    "samples": 99,
+    "errors": 1
+  }
+}
+
+{
+  "language": "Marathi",
+  "lang_code": "mr",
+  "asr": {
+    "wer": 25.56,
+    "cer": 8.93,
+    "samples": 100,
+    "errors": 0
+  }
+}
+
+{
+  "language": "Tamil",
+  "lang_code": "ta",
+  "asr": {
+    "wer": 36.92,
+    "cer": 9.68,
+    "samples": 100,
+    "errors": 0
+  }
+}
+
+{
+  "language": "Telugu",
+  "lang_code": "te",
+  "asr": {
+    "wer": 20.97,
+    "cer": 5.05,
+    "samples": 100,
+    "errors": 0
+  }
+}
+

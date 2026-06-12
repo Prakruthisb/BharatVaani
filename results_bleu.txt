@@ -1,0 +1,79 @@
+{
+  "language": "Bengali",
+  "lang_code": "bn",
+  "translation": {
+    "bleu": 35.06,
+    "samples": 100,
+    "errors": 0
+  }
+}
+
+{
+  "language": "Gujarati",
+  "lang_code": "gu",
+  "translation": {
+    "bleu": 41.75,
+    "samples": 100,
+    "errors": 0
+  }
+}
+
+{
+  "language": "Hindi",
+  "lang_code": "hi",
+  "translation": {
+    "bleu": 50.42,
+    "samples": 100,
+    "errors": 0
+  }
+}
+
+{
+  "language": "Kannada",
+  "lang_code": "kn",
+  "translation": {
+    "bleu": 38.19,
+    "samples": 100,
+    "errors": 0
+  }
+}
+
+{
+  "language": "Malayalam",
+  "lang_code": "ml",
+  "translation": {
+    "bleu": 44.86,
+    "samples": 100,
+    "errors": 0
+  }
+}
+
+{
+  "language": "Marathi",
+  "lang_code": "mr",
+  "translation": {
+    "bleu": 42.3,
+    "samples": 100,
+    "errors": 0
+  }
+}
+
+{
+  "language": "Tamil",
+  "lang_code": "ta",
+  "translation": {
+    "bleu": 37.75,
+    "samples": 100,
+    "errors": 0
+  }
+}
+
+{
+  "language": "Telugu",
+  "lang_code": "te",
+  "translation": {
+    "bleu": 43.37,
+    "samples": 100,
+    "errors": 0
+  }
+}
